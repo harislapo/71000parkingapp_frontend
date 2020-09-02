@@ -1,0 +1,85 @@
+<div class="container col-8 col-md-6 col-lg-4">
+  <form (ngSubmit)="saveUser()">
+    <div class="form-row">
+      <div class="form-group col-12 col-md-6">
+        <label for="firstName">First Name</label>
+        <input
+          [(ngModel)]="user.firstName"
+          name="firstName"
+          type="text"
+          class="form-control"
+          id="firstName"
+          placeholder="Enter first name"
+        />
+      </div>
+      <div class="form-group col-12 col-md-6">
+        <label for="lastName">Last Name</label>
+        <input
+          [(ngModel)]="user.lastName"
+          name="lastName"
+          type="text"
+          class="form-control"
+          id="lastName"
+          placeholder="Enter last name"
+        />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        [(ngModel)]="user.email"
+        name="email"
+        type="text"
+        class="form-control"
+        id="email"
+        placeholder="Enter email"
+      />
+      <small id="hint" class="form-text text-muted"
+        >Your email will not be shared.</small
+      >
+    </div>
+    <div class="form-group">
+      <label for="address">Address</label>
+      <input
+        [(ngModel)]="user.address"
+        name="address"
+        type="text"
+        class="form-control"
+        id="address"
+        placeholder="Enter your address"
+      />
+    </div>
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input
+        [(ngModel)]="user.username"
+        name="username"
+        type="text"
+        class="form-control"
+        id="username"
+        placeholder="Enter username"
+      />
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input
+        [(ngModel)]="user.password"
+        name="password"
+        type="password"
+        class="form-control"
+        id="password"
+        placeholder="Password"
+      />
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+      <small id="hint" class="form-text text-muted mt-4 mb-1"
+        >Have an account? Log in instead.</small
+      >
+      <button type="button" class="btn btn-secondary" (click)="backToLogin()">
+        Log in
+      </button>
+    </div>
+  </form>
+</div>

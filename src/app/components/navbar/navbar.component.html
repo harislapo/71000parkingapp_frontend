@@ -1,0 +1,155 @@
+<nav class="navbar bg-light navbar-light navbar-expand-lg mb-3">
+  <div class="container">
+    <a class="navbar-brand">parking71000</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarResponsive"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/home']"
+            routerLinkActive="link-active"
+            *ngIf="!userService.isAdminRole"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/parkings']"
+            routerLinkActive="link-active"
+            *ngIf="!userService.isAdminRole"
+            >Parkings</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/add-parking']"
+            routerLinkActive="link-active"
+            >Add Parking</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="userService.isAdminRole">
+          <a
+            class="nav-link"
+            [routerLink]="['/admin']"
+            routerLinkActive="link-active"
+            >Manage Posts</a
+          >
+        </li>
+        <li class="nav-item dropdown" *ngIf="!userService.isAdminRole">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+          >
+           <!-- display current user's username -->
+            {{ userService.loggedUser?.username }}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a
+            class="nav-link ml-2"
+            [routerLink]="['/reserved']"
+            routerLinkActive="link-active"
+            >Reserved</a
+          >
+            <a
+              class="nav-link ml-2"
+              [routerLink]="['/profile']"
+              routerLinkActive="link-active"
+              >Profile</a
+            >
+            <button
+              type="button"
+              class="btn btn-danger ml-2"
+              (click)="logout()"
+            >
+              Logout
+            </button>
+          </div>
+        </li>
+        <button type="button" class="btn btn-danger" (click)="logout()" *ngIf="userService.isAdminRole">
+          Logout
+        </button>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- OLD NAVBAR -->
+<!--
+<nav
+  class="navbar navbar-light navbar-expand-md justify-content-between py-md-4 mb-4 bg-dark"
+>
+  <div class="container-fluid">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target=".dual-nav"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse dual-nav w-50 order-1 order-md-0">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link pl-0 orange-text nav-bigger-text"
+            [routerLink]="['/home']"
+            routerLinkActive="link-active"
+            >Home</a
+          >
+        </li>
+        <li>
+          <a
+            class="nav-link orange-text nav-bigger-text"
+            [routerLink]="['/parkings']"
+            routerLinkActive="link-active"
+            >Parkings</a
+          >
+        </li>
+        <li>
+          <a
+            class="nav-link orange-text nav-bigger-text"
+            [routerLink]="['/profile']"
+            routerLinkActive="link-active"
+            >Profile</a
+          >
+        </li>
+      </ul>
+    </div>
+    <h1
+      class="navbar-brand mx-auto d-block text-center order-0 order-md-1 w-25"
+      style="cursor: default;"
+    >
+      Parking Sarajevo
+    </h1>
+    <div class="navbar-collapse collapse dual-nav w-50 order-2">
+      <ul class="nav navbar-nav ml-auto" style="cursor: pointer;">
+        <li class="nav-item">
+          <a class="nav-link"><i class="fa fa-instagram"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"><i class="fa fa-facebook"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"><i class="fa fa-github"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+-->
+<!-- END NAVBAR -->

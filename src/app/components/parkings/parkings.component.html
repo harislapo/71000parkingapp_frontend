@@ -1,0 +1,64 @@
+<div class="container" *ngIf="!selectedParking">
+  <app-parkings-jumbotron></app-parkings-jumbotron>
+
+  <!-- Search form -->
+  <div class="container mb-4">
+    <form class="form-inline d-flex justify-content-center md-form form-sm">
+      <i class="fa fa-search fa-2x" aria-hidden="true"></i>
+      <input
+        class="form-control form-control-sm ml-3 w-50"
+        type="text"
+        placeholder="Ex. Marijin Dvor"
+        style="border-radius: 25px"
+        [(ngModel)]="searchParking.parkingLocated"
+        name="searchParking"
+      />
+      <button class="btn btn-secondary btn-sm ml-2" (click)="searchParkings()">
+        Search
+      </button>
+    </form>
+  </div>
+
+  <!-- Parking card-prevs -->
+  <div class="row">
+    <div class="col text-center">
+      <h2>Parking lots</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let parking of parkings">
+      <div class="card mb-2">
+        <img class="card-img-top" [src]="parking.image" alt="Card image cap" />
+        <div class="card-body text-center">
+          <h5 class="card-title">
+            {{ parking.name }}
+          </h5>
+          <h6 class="card-title">Price/h: {{ parking.price }} KM</h6>
+          <p class="card-text">{{ parking.shortDescription }}</p>
+          <p
+            class="card-text"
+            style="color: limegreen"
+            *ngIf="parking.reservedCounter"
+          >
+            This parking has been reserved {{ parking.reservedCounter }} times
+            today!
+          </p>
+          <button (click)="showMore(parking)" class="btn btn-success">
+            Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-5" *ngIf="parkings.length == 0">
+    <h3>No parkings found</h3>
+    <i class="fa fa-frown-o fa-3x" aria-hidden="true" style="color:orangered"></i>
+  </div>
+</div>
+
+<app-parking-preview
+  *ngIf="selectedParking"
+  [parking]="selectedParking"
+  (backToParkingsEmit)="selectedParking = null"
+></app-parking-preview>
+<!--  -->

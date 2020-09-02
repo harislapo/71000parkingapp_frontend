@@ -1,0 +1,67 @@
+<div class="mt-4">
+  <h1 class="text-center">Comments</h1>
+  <div class="border-top border-danger w-50 mx-auto mt-4"></div>
+</div>
+
+<div class="container mt-5">
+  <div *ngFor="let comment of comments">
+    <div class="card" *ngIf="comment">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-2 col-4">
+            <img
+              src="https://image.ibb.co/jw55Ex/def_face.jpg"
+              class="img img-fluid"
+            />
+            <p class="text-secondary text-center">
+              {{ comment.commentDateCreated | date: "MMM d, yy, HH:mm" }}
+            </p>
+          </div>
+          <div class="col-md-10">
+            <div>
+              <h5 class="float-left">
+                <strong>{{ comment.username }}</strong>
+              </h5>
+              <!--             <span class="float-right"
+              ><i class="text-warning fa fa-star"></i
+            ></span>
+            <span class="float-right"
+              ><i class="text-warning fa fa-star"></i
+            ></span>
+            <span class="float-right"
+              ><i class="text-warning fa fa-star"></i
+            ></span>
+            <span class="float-right"
+              ><i class="text-warning fa fa-star"></i
+            ></span> -->
+            </div>
+            <div class="clearfix mt-5"></div>
+            <p>{{ comment.message }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-4" *ngIf="comments.length == 0">
+    <h4>No comments yet!</h4>
+    <p class="lead">Go ahead and add one!</p>
+  </div>
+</div>
+
+<div class="container mt-4">
+  <form class="form-group" (ngSubmit)="addComment()">
+    <label for="comment">Your comment: </label>
+    <textarea
+      name="comment"
+      id="comment"
+      rows="5"
+      class="form-control"
+      placeholder="Share your thoughts.."
+      [(ngModel)]="newComment.message"
+    ></textarea>
+    <div class="text-center mt-3">
+      <button class="btn btn-success mr-2" type="submit">Submit</button>
+      <button class="btn btn-danger" type="reset">Reset</button>
+    </div>
+  </form>
+</div>

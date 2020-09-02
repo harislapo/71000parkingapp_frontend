@@ -1,0 +1,157 @@
+<div class="container profile">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title mb-4">
+            <div class="d-flex justify-content-start">
+              <div class="image-container">
+                <img
+                  src="https://cdn3.f-cdn.com/contestentries/1376995/30494909/5b566bc71d308_thumb900.jpg"
+                  id="imgProfile"
+                  style="width: 150px; height: 150px"
+                  class="img-thumbnail"
+                />
+              </div>
+              <div class="userData ml-3">
+                <h1 class="d-block" style="font-size: 3rem; font-weight: bold">
+                  {{ userService.loggedUser.username }}
+                </h1>
+
+                <h5 class="d-block">
+                  <u>{{ userService.loggedUser.role }}</u> role enabled!
+                </h5>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a
+                    class="nav-link active"
+                    id="info-tab"
+                    data-toggle="tab"
+                    href="#info"
+                    role="tab"
+                    aria-controls="info"
+                    aria-selected="true"
+                    >Info</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link"
+                    id="reservations-tab"
+                    data-toggle="tab"
+                    href="#reservations"
+                    role="tab"
+                    aria-controls="reservations"
+                    aria-selected="false"
+                    >History</a
+                  >
+                </li>
+              </ul>
+              <div class="tab-content ml-1" id="myTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="info"
+                  role="tabpanel"
+                  aria-labelledby="info-tab"
+                >
+                  <div class="row">
+                    <div class="col-sm-3 col-md-2 col-5">
+                      <label style="font-weight: bold">First name</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                      {{ userService.loggedUser.firstName }}
+                    </div>
+                  </div>
+                  <hr />
+                  <div class="row">
+                    <div class="col-sm-3 col-md-2 col-5">
+                      <label style="font-weight: bold">Last name</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                      {{ userService.loggedUser.lastName }}
+                    </div>
+                  </div>
+                  <hr />
+
+                  <div class="row">
+                    <div class="col-sm-3 col-md-2 col-5">
+                      <label style="font-weight: bold">Email</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                      {{ userService.loggedUser.email }}
+                    </div>
+                  </div>
+                  <hr />
+
+                  <div class="row">
+                    <div class="col-sm-3 col-md-2 col-5">
+                      <label style="font-weight: bold">Address</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                      {{ userService.loggedUser.address }}
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+                <div
+                  class="tab-pane fade"
+                  id="reservations"
+                  role="tabpanel"
+                  aria-labelledby="reservations-tab"
+                >
+                  <div
+                    class="container-fluid"
+                    *ngFor="let finishedReservation of finishedReservations"
+                  >
+                    <div class="card mb-3">
+                      <div class="row no-gutters">
+                        <div class="col-md-4">
+                          <img
+                            [src]="finishedReservation.image"
+                            class="card-img"
+                            alt="..."
+                          />
+                        </div>
+                        <div class="col-md-8">
+                          <div class="card-body">
+                            <h5 class="card-title">
+                              {{ finishedReservation.name }}
+                            </h5>
+                            <p class="card-text">
+                              {{ finishedReservation.description }}
+                            </p>
+                            <hr />
+                            <p class="card-text">
+                              <small
+                                >Reserved on:
+                                {{
+                                  finishedReservation.dateCreated
+                                    | date: "dd/MM/yyyy"
+                                }}
+                                at
+                                {{
+                                  finishedReservation.dateCreated
+                                    | date: "HH:mm"
+                                }}</small
+                              >
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
