@@ -26,8 +26,17 @@ export class UserService {
   }
 
   //check for admin role, if not hide Admin from navbar
-  get isAdminRole(): boolean{
+  get isAdminRole(): boolean {
     const user = this.loggedUser;
     return user.role === 'ADMIN' ? true : false;
   }
+
+  getAllUsers() {
+    return this.http.get(this.serverUrl + 'admin/get/all-users');
+  }
+
+  deleteUser(id: number) {
+    return this.http.delete(this.serverUrl + 'admin/delete-user?id=' + id);
+  }
+
 }

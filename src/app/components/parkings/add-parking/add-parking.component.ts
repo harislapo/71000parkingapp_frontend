@@ -42,7 +42,7 @@ export class AddParkingComponent implements OnInit {
       this.parking.id = response;
 
       this.toastr.success('Successfully added!');
-/*       this.router.navigateByUrl('parkings');
- */    });
+      this.router.navigateByUrl('parkings');
+    });
   }
 }
