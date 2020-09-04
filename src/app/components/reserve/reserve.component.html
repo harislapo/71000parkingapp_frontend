@@ -1,16 +1,30 @@
-<div class="container mb-4" *ngFor="let reservation of reservations">
-  <h3>{{ reservation.name }}</h3>
-  <h5>{{ reservation.parkingLocated }}</h5>
-  <h6>{{ reservation.price }} KM</h6>
-  <p class="lead">{{ reservation.shortDescription }}</p>
-  <div class="row">
-    <button
-      class="btn btn-success mr-2"
-      (click)="confirmReservation(reservation)"
-    >
-      Confirm reservation
-    </button>
-    <button class="btn btn-danger" (click)="removeReservation(reservation)">Remove</button>
+<div class="container">
+  <div *ngIf="reservations.length !== 0">
+    <div class="container mb-4" *ngFor="let reservation of reservations">
+      <h3>{{ reservation.name }}</h3>
+      <h5>{{ reservation.parkingLocated }}</h5>
+      <h6>{{ reservation.price }} KM</h6>
+      <p class="lead">{{ reservation.shortDescription }}</p>
+      <div class="row">
+        <button
+          class="btn btn-success mr-2"
+          (click)="confirmReservation(reservation)"
+        >
+          Confirm reservation
+        </button>
+        <button class="btn btn-danger" (click)="removeReservation(reservation)">
+          Remove
+        </button>
+      </div>
+    </div>
   </div>
 </div>
 
+<div class="container cont-text">
+  <div class="jumbotron" *ngIf="reservations.length == 0">
+    <div class="container text-center">
+      <h1 class="display-4">There are no reservations, yet!</h1>
+      <p class="lead">Go ahead and add one!</p>
+    </div>
+  </div>
+</div>

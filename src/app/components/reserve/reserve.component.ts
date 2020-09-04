@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reserve.component.scss'],
 })
 export class ReserveComponent implements OnInit {
-  reservations: Parking[];
+  reservations: Parking[] = [];
 
   constructor(
     private restApi: RestApiService,
