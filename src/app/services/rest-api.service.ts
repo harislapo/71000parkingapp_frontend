@@ -84,6 +84,15 @@ export class RestApiService {
   }
 /*
   getRatingForUser(userId: number, parkingId: number){
-    return this.http.get(this.serverUrl + 'parking/ratings/get-rating-for-user' + userId + parkingId)
+    return this.http.get(this.serverUrl + 'parking/ratings/get-rating-for-user?userId=&parkingId=' + userId + parkingId)
+  }
+
+  removeRating(parkingId: number, userId: number) {
+    return this.http.delete(
+      this.serverUrl +
+        'parking/ratings/remove-rating?parkingId=&userId=' +
+        parkingId +
+        userId
+    );
   } */
 }

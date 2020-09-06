@@ -1,11 +1,26 @@
-<div class="container text-center mt-5 mb-5">
+<div class="container text-center mt-5">
   <h3>Please rate this location!</h3>
 
   <ngb-rating
     [max]="5"
     [readonly]="false"
-    [(rate)]="initRating"
+    [(rate)]="rating"
     (rateChange)="addRating()"
-    [ngModel]="initRating"
+    [ngModel]="rating"
   ></ngb-rating>
 </div>
+<div class="container text-center mt-1 mb-5">
+  <button class="btn btn-danger" (click)="onClear()">Clear</button>
+</div>
+
+<!--
+<div class="container text-center mt-5">
+  <h3>This is your rating for this location!</h3>
+  <ngb-rating
+    [max]="5"
+    [readonly]="true"
+    [(rate)]="rating"
+    [ngModel]="rating"
+  ></ngb-rating>
+</div>
+ -->

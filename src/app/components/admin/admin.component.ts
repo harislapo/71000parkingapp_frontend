@@ -4,6 +4,7 @@ import { GetParking } from './../parkings/GetParking.class';
 import { GetUser } from './GetUser.class';
 import { UserService } from './../../services/user-service.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -19,10 +20,14 @@ export class AdminComponent implements OnInit {
   constructor(
     public userService: UserService,
     private restApi: RestApiService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    if (!this.userService.isAdminRole) {
+      this.router.navigateByUrl('notfound');
+    }
     this.getAllUsers();
     this.getAllParkings();
   }
@@ -39,18 +44,17 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  deleteUser(user: GetUser){
-    this.userService.deleteUser(user.id).subscribe(response => {
+  deleteUser(user: GetUser) {
+    this.userService.deleteUser(user.id).subscribe((response) => {
       this.toastr.success('User removed!');
       this.getAllUsers();
-    })
+    });
   }
 
-
-  deleteParking(parking: GetParking){
-    this.restApi.deleteParking(parking.id).subscribe(response => {
+  deleteParking(parking: GetParking) {
+    this.restApi.deleteParking(parking.id).subscribe((response) => {
       this.toastr.success('Parking removed!');
       this.getAllParkings();
-    })
+    });
   }
 }

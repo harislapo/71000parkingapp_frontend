@@ -3,6 +3,7 @@ import { UserService } from './../../services/user-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -21,8 +22,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  saveUser() {
-    //validacija treba!
+  saveUser(form: NgForm) {
     this.userService.register(this.user).subscribe((response: number) => {
       this.user.id = response;
       this.toastr.success('Successfully registered!');

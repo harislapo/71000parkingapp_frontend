@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { UserService } from './../../services/user-service.service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from './../register/User.class';
@@ -21,17 +22,23 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  login() {
+  login(form: NgForm) {
     if (this.user.username && this.user.password) {
       this.userService.login(this.user).subscribe((response: User) => {
         if (response) {
           this.user = response;
           delete this.user.password;
 
-          //adding user to local storage
+          //add user to local storage
           localStorage.setItem('loggedUser', JSON.stringify(this.user)); //convert to string
 
-          this.router.navigateByUrl('home');
+          //check for user role, if user role is admin - redirect to admin
+          //page, otherwise go to homepage
+          if (this.userService.isAdminRole) {
+            this.router.navigateByUrl('admin');
+          } else {
+            this.router.navigateByUrl('home');
+          }
           this.toastr.success('Welcome!');
         } else {
           this.toastr.warning('Wrong username and/or password!');

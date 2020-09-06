@@ -1,5 +1,5 @@
-<div class="container col-8 col-md-6 col-lg-4">
-  <form (ngSubmit)="saveUser()">
+<div class="container col-8 col-md-6 col-lg-5 center">
+  <form (ngSubmit)="saveUser(f)" #f="ngForm">
     <div class="form-row">
       <div class="form-group col-12 col-md-6">
         <label for="firstName">First Name</label>
@@ -10,7 +10,12 @@
           class="form-control"
           id="firstName"
           placeholder="Enter first name"
+          required
+          #firstName="ngModel"
         />
+        <span class="help-block" *ngIf="!firstName.valid && firstName.touched"
+        >Please enter your first name!</span
+      >
       </div>
       <div class="form-group col-12 col-md-6">
         <label for="lastName">Last Name</label>
@@ -21,12 +26,17 @@
           class="form-control"
           id="lastName"
           placeholder="Enter last name"
+          required
+          #lastName="ngModel"
         />
+        <span class="help-block" *ngIf="!lastName.valid && lastName.touched"
+        >Please enter your last name!</span
+      >
       </div>
     </div>
 
     <div class="form-group">
-      <label for="email">Email</label>
+      <label>Email</label>
       <input
         [(ngModel)]="user.email"
         name="email"
@@ -34,24 +44,35 @@
         class="form-control"
         id="email"
         placeholder="Enter email"
+        required
+        email
+        #email="ngModel"
       />
+      <span class="help-block" *ngIf="!email.valid && email.touched"
+      >Please enter your email!</span
+    >
       <small id="hint" class="form-text text-muted"
         >Your email will not be shared.</small
       >
     </div>
     <div class="form-group">
-      <label for="address">Address</label>
+      <label>Address</label>
       <input
         [(ngModel)]="user.address"
         name="address"
         type="text"
         class="form-control"
         id="address"
-        placeholder="Enter your address"
+        placeholder="Address"
+        required
+        #address="ngModel"
       />
+      <span class="help-block" *ngIf="!address.valid && address.touched"
+      >Please enter your address!</span
+    >
     </div>
     <div class="form-group">
-      <label for="username">Username</label>
+      <label>Username</label>
       <input
         [(ngModel)]="user.username"
         name="username"
@@ -59,10 +80,15 @@
         class="form-control"
         id="username"
         placeholder="Enter username"
+        required
+        #username="ngModel"
       />
+      <span class="help-block" *ngIf="!username.valid && username.touched"
+      >Please enter username!</span
+    >
     </div>
     <div class="form-group">
-      <label for="password">Password</label>
+      <label>Password</label>
       <input
         [(ngModel)]="user.password"
         name="password"
@@ -70,10 +96,17 @@
         class="form-control"
         id="password"
         placeholder="Password"
+        required
+        #password="ngModel"
       />
+      <span class="help-block" *ngIf="!password.valid && password.touched"
+        >Please enter password!</span
+      >
     </div>
     <div class="text-center">
-      <button type="submit" class="btn btn-primary">Sign Up</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
+        Sign Up
+      </button>
       <small id="hint" class="form-text text-muted mt-4 mb-1"
         >Have an account? Log in instead.</small
       >
