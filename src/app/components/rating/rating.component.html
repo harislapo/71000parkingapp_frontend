@@ -1,1 +1,11 @@
-<p>rating works!</p>
+<div class="container text-center mt-5 mb-5">
+  <h3>Please rate this location!</h3>
+
+  <ngb-rating
+    [max]="5"
+    [readonly]="false"
+    [(rate)]="initRating"
+    (rateChange)="addRating()"
+    [ngModel]="initRating"
+  ></ngb-rating>
+</div>

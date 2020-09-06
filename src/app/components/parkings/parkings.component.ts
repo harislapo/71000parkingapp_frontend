@@ -36,7 +36,9 @@ export class ParkingsComponent implements OnInit {
     //on click save all information in selectedParking about
     //selected parking
     this.selectedParking = parking;
+    this.restApi.goToTop();
   }
+
 
   searchParkings() {
     this.restApi.searchForParkings(this.searchParking).subscribe((response: Parking[]) => {

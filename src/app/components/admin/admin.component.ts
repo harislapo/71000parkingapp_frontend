@@ -12,9 +12,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
   getUsers: GetUser[] = [];
-  user: GetUser[];
+  //user: GetUser[];
   getParkings: GetParking[] = [];
-  parking: GetParking[];
+  //parking: GetParking[];
 
   constructor(
     public userService: UserService,

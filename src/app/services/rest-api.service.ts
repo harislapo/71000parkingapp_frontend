@@ -12,6 +12,14 @@ export class RestApiService {
 
   constructor(private http: HttpClient) {}
 
+  goToTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }
+
   getAllParkings() {
     return this.http.get(this.serverUrl + 'parking/all');
   }
@@ -25,7 +33,9 @@ export class RestApiService {
   }
 
   getReservedForUser(userId: number) {
-    return this.http.get(this.serverUrl + 'reserved/parking?userId=' + userId);
+    return this.http.get(
+      this.serverUrl + 'reserved/get-reserved?userId=' + userId
+    );
   }
 
   removeParkingFromReserve(id: number) {
@@ -65,4 +75,15 @@ export class RestApiService {
   deleteParking(id: number) {
     return this.http.delete(this.serverUrl + 'admin/delete-parking?id=' + id);
   }
+
+  addRating(request) {
+    return this.http.post(
+      this.serverUrl + 'parking/ratings/add-rating',
+      request
+    );
+  }
+/*
+  getRatingForUser(userId: number, parkingId: number){
+    return this.http.get(this.serverUrl + 'parking/ratings/get-rating-for-user' + userId + parkingId)
+  } */
 }

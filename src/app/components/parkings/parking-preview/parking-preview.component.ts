@@ -33,6 +33,7 @@ export class ParkingPreviewComponent implements OnInit {
 
   backToParkings() {
     this.backToParkingsEmit.emit();
+    this.restApi.goToTop();
   }
 
   addToReserved(parking: Parking) {

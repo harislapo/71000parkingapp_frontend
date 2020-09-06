@@ -29,6 +29,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ReserveComponent } from './components/reserve/reserve.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { ReserveComponent } from './components/reserve/reserve.component';
     }),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCGsfiMguGFcl-_XPNoV9i2iLKcVp9nOUI'
-    })
+    }),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent],
