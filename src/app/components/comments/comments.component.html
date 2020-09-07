@@ -5,7 +5,7 @@
 
 <div class="container mt-5">
   <div *ngFor="let comment of comments">
-    <div class="card mt-3" *ngIf="comment">
+    <div class="card mt-3" *ngIf="comment; else no_comments">
       <div class="card-body">
         <div class="row">
           <div class="col-md-2 col-4">
@@ -14,26 +14,14 @@
               class="img img-fluid"
             />
             <p class="text-secondary text-center">
-              {{ comment.commentDateCreated | date: "MMM d, yy, HH:mm" }}
+              {{ comment.commentDateCreated | date: "dd/MM/yy, HH:mm" }}
             </p>
           </div>
-          <div class="col-md-10">
+          <div class="col-12 col-md-8">
             <div>
               <h5 class="float-left">
                 <strong>{{ comment.username }}</strong>
               </h5>
-              <!--             <span class="float-right"
-              ><i class="text-warning fa fa-star"></i
-            ></span>
-            <span class="float-right"
-              ><i class="text-warning fa fa-star"></i
-            ></span>
-            <span class="float-right"
-              ><i class="text-warning fa fa-star"></i
-            ></span>
-            <span class="float-right"
-              ><i class="text-warning fa fa-star"></i
-            ></span> -->
             </div>
             <div class="clearfix mt-5"></div>
             <p>{{ comment.message }}</p>
@@ -42,7 +30,7 @@
       </div>
     </div>
   </div>
-  <div class="text-center mt-4" *ngIf="comments.length == 0">
+  <div class="text-center mt-4" #no_comments>
     <h4>No comments yet!</h4>
     <p class="lead">Go ahead and add one!</p>
   </div>

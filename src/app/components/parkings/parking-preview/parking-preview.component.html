@@ -21,28 +21,28 @@
     </div>
   </div>
   <div class="row text-center">
-    <div class="col">
+    <div class="col-12 col-sm-3 col-md-3 col-lg-3 mb-2">
       <div class="info-display">
         <i class="fa fa-clock-o fa-2x"></i>
         <h5>Open</h5>
         <h6>{{ parking.openingHours }}h-{{ parking.closingHours }}h</h6>
       </div>
     </div>
-    <div class="col">
+    <div class="col-12 col-sm-3 col-md-3 col-lg-3 mb-2">
       <div class="info-display">
         <i class="fa fa-money fa-2x"></i>
         <h5>Price/h</h5>
         <h6>{{ parking.price }} KM</h6>
       </div>
     </div>
-    <div class="col">
+    <div class="col-12 col-sm-3 col-md-3 col-lg-3 mb-2">
       <div class="info-display">
         <i class="fa fa-shield fa-2x"></i>
         <h5>Security</h5>
         <h6>{{ parking.security }}</h6>
       </div>
     </div>
-    <div class="col">
+    <div class="col-12 col-sm-3 col-md-3 col-lg-3 mb-2">
       <div class="info-display">
         <i class="fa fa-star fa-2x"></i>
         <h5>Rating</h5>
@@ -57,9 +57,12 @@
 
 <div class="container">
   <div class="text-center">
+    <!-- disable addToReserved button if its free parking -->
     <button
       class="btn btn-success btn-lg mr-2"
       (click)="addToReserved(parking)"
+      [disabled]="parking.price == 0"
+      title="click here"
     >
       <i class="fa fa-check" aria-hidden="true"></i> Reserve
     </button>

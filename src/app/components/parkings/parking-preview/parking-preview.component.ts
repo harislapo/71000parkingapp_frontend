@@ -44,6 +44,7 @@ export class ParkingPreviewComponent implements OnInit {
       })
       .subscribe((response) => {
         this.toastr.success('Added to reservations!');
+        this.restApi.goToTop();
         this.router.navigateByUrl('reserved');
       });
   }

@@ -44,6 +44,7 @@ export class ReserveComponent implements OnInit {
       .subscribe((response) => {
         this.toastr.success('Reservation successful!');
         this.getReservationForUser();
+        this.restApi.goToTop();
       });
   }
 
@@ -51,6 +52,7 @@ export class ReserveComponent implements OnInit {
     this.restApi
       .removeParkingFromReserve(parking.reservationId)
       .subscribe((response) => {
+        this.restApi.goToTop();
         this.toastr.success(response['message'])
         this.getReservationForUser();
       });

@@ -2,7 +2,7 @@
   <app-parkings-jumbotron></app-parkings-jumbotron>
 
   <!-- Search form -->
-  <div class="container mb-4">
+  <div class="container mb-3">
     <form class="form-inline d-flex justify-content-center md-form form-sm">
       <i class="fa fa-search fa-2x" aria-hidden="true"></i>
       <input
@@ -20,39 +20,49 @@
   </div>
 
   <!-- Parking card-prevs -->
-  <div class="row">
+  <div class="row mb-3">
     <div class="col text-center">
       <h2>Parking lots</h2>
+      <div class="border-top border-danger w-50 mx-auto my-3"></div>
+
     </div>
   </div>
-  <div class="row">
+  <div class="row mb-5">
     <div class="col-12 col-md-6 col-lg-4" *ngFor="let parking of parkings">
       <div class="card mb-2">
         <img class="card-img-top" [src]="parking.image" alt="Card image cap" />
-        <div class="card-body text-center">
+        <div class="card-body text-center d-flex flex-column">
           <h5 class="card-title">
             {{ parking.name }}
           </h5>
           <h6 class="card-title">Price/h: {{ parking.price }} KM</h6>
           <p class="card-text">{{ parking.shortDescription }}</p>
-          <p
-            class="card-text"
-            style="color: limegreen"
-            *ngIf="parking.reservedCounter"
-          >
+          <p class="card-text reserved" *ngIf="parking.reservedCounter">
             This parking has been reserved {{ parking.reservedCounter }} times
             today!
           </p>
-          <button (click)="showMore(parking)" class="btn btn-success">
+          <p
+            class="card-text reserve-empty"
+            *ngIf="!parking.reservedCounter && parking.price !== 0"
+          >
+            Be the first to reserve this parking today!
+          </p>
+          <p class="card-text free-parking" *ngIf="parking.price == 0">
+            This is a free parking option. Try your luck!
+          </p>
+          <button (click)="showMore(parking)" class="btn btn-success mt-auto">
             Details
           </button>
         </div>
       </div>
     </div>
   </div>
-  <div class="text-center mt-5" *ngIf="parkings.length == 0">
-    <h3>No parkings found</h3>
-    <i class="fa fa-frown-o fa-3x" aria-hidden="true" style="color:orangered"></i>
+  <div class="text-center mt-5 no-parkings" *ngIf="parkings.length == 0">
+    <h1 class="display-4">No parkings found</h1>
+    <i
+      class="fa fa-frown-o fa-3x"
+      aria-hidden="true"
+    ></i>
   </div>
 </div>
 

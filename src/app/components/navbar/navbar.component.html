@@ -1,8 +1,7 @@
 <nav class="navbar bg-light navbar-light navbar-expand-lg mb-3">
   <div class="container">
-    <a class="navbar-brand"><img
-      src="../../../assets/images/logox.png"
-      alt=""
+    <a class="navbar-brand" [routerLink]="['/home']"
+      ><img src="../../../assets/images/logox.png" alt=""
     /></a>
     <button
       class="navbar-toggler"
@@ -15,15 +14,6 @@
 
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            [routerLink]="['/home']"
-            routerLinkActive="link-active"
-            *ngIf="!userService.isAdminRole"
-            >Home</a
-          >
-        </li>
         <li class="nav-item">
           <a
             class="nav-link"
@@ -58,16 +48,16 @@
             role="button"
             data-toggle="dropdown"
           >
-           <!-- display current user's username -->
+            <!-- display current user's username -->
             {{ userService.loggedUser?.username }}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a
-            class="nav-link ml-2"
-            [routerLink]="['/reserved']"
-            routerLinkActive="link-active"
-            >Reserved</a
-          >
+              class="nav-link ml-2"
+              [routerLink]="['/reserved']"
+              routerLinkActive="link-active"
+              >Reserved</a
+            >
             <a
               class="nav-link ml-2"
               [routerLink]="['/profile']"
@@ -83,7 +73,12 @@
             </button>
           </div>
         </li>
-        <button type="button" class="btn btn-danger" (click)="logout()" *ngIf="userService.isAdminRole">
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="logout()"
+          *ngIf="userService.isAdminRole"
+        >
           Logout
         </button>
       </ul>

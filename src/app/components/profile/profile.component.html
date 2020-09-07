@@ -7,7 +7,7 @@
             <div class="d-flex justify-content-start">
               <div class="image-container">
                 <img
-                  src="https://cdn3.f-cdn.com/contestentries/1376995/30494909/5b566bc71d308_thumb900.jpg"
+                  src="https://www.pngitem.com/pimgs/m/150-1503941_user-windows-10-user-icon-png-transparent-png.png"
                   id="imgProfile"
                   style="width: 150px; height: 150px"
                   class="img-thumbnail"
@@ -98,6 +98,14 @@
                     </div>
                   </div>
                   <hr />
+                  <div class="row">
+                    <div class="col-sm-3 col-md-2 col-5">
+                      <label style="font-weight: bold">Date registered</label>
+                    </div>
+                    <div class="col-md-8 col-6">
+                      {{ userService.loggedUser.createDate | date: "dd/MM/yyyy" }}
+                    </div>
+                  </div>
                 </div>
                 <div
                   class="tab-pane fade"

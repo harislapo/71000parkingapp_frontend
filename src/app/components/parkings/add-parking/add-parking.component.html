@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container wrapper">
   <form (ngSubmit)="addNewParking(f)" #f="ngForm">
     <div class="form-row">
       <div class="form-group col-md-6">
@@ -42,12 +42,13 @@
           [(ngModel)]="parking.price"
           name="price"
           type="number"
+          step="0.5"
           class="form-control"
           id="price"
           placeholder="Price/h"
           required
           #price="ngModel"
-          pattern="^[0-9]*$"
+          pattern="^[0-9.]*$"
 
         />
         <span class="help-block" *ngIf="!price.valid && price.touched"
@@ -113,7 +114,7 @@
         type="text"
         class="form-control"
         id="shortDescription"
-        placeholder="In a few words"
+        placeholder="In five-six words"
         required
         #shortDescription="ngModel"
       />
@@ -125,7 +126,7 @@
     </div>
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label>Located in</label>
+        <label>Located around</label>
         <input
           [(ngModel)]="parking.parkingLocated"
           name="parkingLocated"
@@ -217,6 +218,7 @@
     </div>
 
     <div>
+      <h2 class="text-center">Where is it located on the map?</h2>
       <agm-map
         [zoom]="zoom"
         [latitude]="initLat"
