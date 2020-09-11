@@ -4,7 +4,6 @@
     [zoom]="zoom"
     [latitude]="lat"
     [longitude]="lng"
-    [mapTypeId]="mapType"
   >
     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
   </agm-map>
@@ -46,7 +45,7 @@
       <div class="info-display">
         <i class="fa fa-star fa-2x"></i>
         <h5>Rating</h5>
-        <h6>7.6</h6>
+        <h6>4.4</h6>
       </div>
     </div>
   </div>
@@ -57,7 +56,7 @@
 
 <div class="container">
   <div class="text-center">
-    <!-- disable addToReserved button if its free parking -->
+    <!-- disable addToReserved button if its a free parking -->
     <button
       class="btn btn-success btn-lg mr-2"
       (click)="addToReserved(parking)"

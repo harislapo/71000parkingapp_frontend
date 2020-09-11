@@ -1,118 +1,129 @@
-<div class="container col-8 col-md-6 col-lg-5 center">
-  <form (ngSubmit)="saveUser(f)" #f="ngForm">
-    <div class="form-row">
-      <div class="form-group col-12 col-md-6">
-        <label for="firstName">First Name</label>
-        <input
-          [(ngModel)]="user.firstName"
-          name="firstName"
-          type="text"
-          class="form-control"
-          id="firstName"
-          placeholder="Enter first name"
-          required
-          #firstName="ngModel"
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-10 col-sm-6 col-md-6 col-lg-4">
+      <form class="form-container" (ngSubmit)="saveUser(f)" #f="ngForm">
+        <img class="img-fluid"
+        src="../../../assets/images/login_logo.gif"
+        alt=""
         />
-        <span class="help-block" *ngIf="!firstName.valid && firstName.touched"
-        >Please enter your first name!</span
-      >
-      </div>
-      <div class="form-group col-12 col-md-6">
-        <label for="lastName">Last Name</label>
-        <input
-          [(ngModel)]="user.lastName"
-          name="lastName"
-          type="text"
-          class="form-control"
-          id="lastName"
-          placeholder="Enter last name"
-          required
-          #lastName="ngModel"
-        />
-        <span class="help-block" *ngIf="!lastName.valid && lastName.touched"
-        >Please enter your last name!</span
-      >
-      </div>
-    </div>
+        <h2 class="text-center">Registration</h2>
+        <hr class="my-4" />
 
-    <div class="form-group">
-      <label>Email</label>
-      <input
-        [(ngModel)]="user.email"
-        name="email"
-        type="text"
-        class="form-control"
-        id="email"
-        placeholder="Enter email"
-        required
-        email
-        #email="ngModel"
-      />
-      <span class="help-block" *ngIf="!email.valid && email.touched"
-      >Please enter your email!</span
-    >
-      <small id="hint" class="form-text text-muted"
-        >Your email will not be shared.</small
-      >
+        <div class="form-row">
+          <div class="form-group col-12 col-md-6">
+            <input
+              [(ngModel)]="user.firstName"
+              name="firstName"
+              type="text"
+              class="form-control"
+              id="firstName"
+              placeholder="Enter first name"
+              required
+              #firstName="ngModel"
+            />
+            <span
+              class="help-block"
+              *ngIf="!firstName.valid && firstName.touched"
+              >Please enter your first name!</span
+            >
+          </div>
+          <div class="form-group col-12 col-md-6">
+            <input
+              [(ngModel)]="user.lastName"
+              name="lastName"
+              type="text"
+              class="form-control"
+              id="lastName"
+              placeholder="Enter last name"
+              required
+              #lastName="ngModel"
+            />
+            <span class="help-block" *ngIf="!lastName.valid && lastName.touched"
+              >Please enter your last name!</span
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            [(ngModel)]="user.email"
+            name="email"
+            type="text"
+            class="form-control"
+            id="email"
+            placeholder="Enter email"
+            required
+            email
+            #email="ngModel"
+          />
+          <span class="help-block" *ngIf="!email.valid && email.touched"
+            >Please enter your email!</span
+          >
+          <small id="hint" class="form-text text-muted"
+            >Your email will not be shared.</small
+          >
+        </div>
+        <div class="form-group">
+          <input
+            [(ngModel)]="user.address"
+            name="address"
+            type="text"
+            class="form-control"
+            id="address"
+            placeholder="Address"
+            required
+            #address="ngModel"
+          />
+          <span class="help-block" *ngIf="!address.valid && address.touched"
+            >Please enter your address!</span
+          >
+        </div>
+        <div class="form-group">
+          <input
+            [(ngModel)]="user.username"
+            name="username"
+            type="text"
+            class="form-control"
+            id="username"
+            placeholder="Enter username"
+            required
+            #username="ngModel"
+          />
+          <span class="help-block" *ngIf="!username.valid && username.touched"
+            >Please enter username!</span
+          >
+        </div>
+        <div class="form-group">
+          <input
+            [(ngModel)]="user.password"
+            name="password"
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Password"
+            required
+            #password="ngModel"
+          />
+          <span class="help-block" *ngIf="!password.valid && password.touched"
+            >Please enter password!</span
+          >
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary btn-block" [disabled]="!f.valid">
+            Sign Up
+          </button>
+          <small id="hint" class="form-text text-muted mt-4 mb-1"
+            >Have an account? Log in instead.</small
+          >
+          <button
+            type="button"
+            class="btn btn-secondary btn-block"
+            (click)="backToLogin()"
+          >
+            Log in
+          </button>
+        </div>
+      </form>
     </div>
-    <div class="form-group">
-      <label>Address</label>
-      <input
-        [(ngModel)]="user.address"
-        name="address"
-        type="text"
-        class="form-control"
-        id="address"
-        placeholder="Address"
-        required
-        #address="ngModel"
-      />
-      <span class="help-block" *ngIf="!address.valid && address.touched"
-      >Please enter your address!</span
-    >
-    </div>
-    <div class="form-group">
-      <label>Username</label>
-      <input
-        [(ngModel)]="user.username"
-        name="username"
-        type="text"
-        class="form-control"
-        id="username"
-        placeholder="Enter username"
-        required
-        #username="ngModel"
-      />
-      <span class="help-block" *ngIf="!username.valid && username.touched"
-      >Please enter username!</span
-    >
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input
-        [(ngModel)]="user.password"
-        name="password"
-        type="password"
-        class="form-control"
-        id="password"
-        placeholder="Password"
-        required
-        #password="ngModel"
-      />
-      <span class="help-block" *ngIf="!password.valid && password.touched"
-        >Please enter password!</span
-      >
-    </div>
-    <div class="text-center">
-      <button type="submit" class="btn btn-primary" [disabled]="!f.valid">
-        Sign Up
-      </button>
-      <small id="hint" class="form-text text-muted mt-4 mb-1"
-        >Have an account? Log in instead.</small
-      >
-      <button type="button" class="btn btn-secondary" (click)="backToLogin()">
-        Log in
-      </button>
-    </div>
-  </form>
+  </div>
 </div>

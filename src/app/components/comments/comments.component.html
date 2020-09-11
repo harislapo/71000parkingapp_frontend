@@ -3,9 +3,9 @@
   <div class="border-top border-danger w-50 mx-auto mt-4"></div>
 </div>
 
-<div class="container mt-5">
+<div class="container mt-5"  *ngIf="comments.length > 0; else no_comments">
   <div *ngFor="let comment of comments">
-    <div class="card mt-3" *ngIf="comment; else no_comments">
+    <div class="card mt-3">
       <div class="card-body">
         <div class="row">
           <div class="col-md-2 col-4">
@@ -29,12 +29,15 @@
         </div>
       </div>
     </div>
+
   </div>
-  <div class="text-center mt-4" #no_comments>
+</div>
+<ng-template #no_comments>
+  <div class="container text-center mt-3">
     <h4>No comments yet!</h4>
     <p class="lead">Go ahead and add one!</p>
   </div>
-</div>
+</ng-template>
 
 <div class="container mt-4">
   <form class="form-group" (ngSubmit)="addComment()">

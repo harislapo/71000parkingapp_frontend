@@ -3,6 +3,7 @@ import { Parking } from './../parkings/Parking.class';
 import { UserService } from './../../services/user-service.service';
 import { RestApiService } from './../../services/rest-api.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reserve',
@@ -15,7 +16,8 @@ export class ReserveComponent implements OnInit {
   constructor(
     private restApi: RestApiService,
     private userService: UserService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -56,5 +58,9 @@ export class ReserveComponent implements OnInit {
         this.toastr.success(response['message'])
         this.getReservationForUser();
       });
+  }
+
+  goToParkings(){
+    this.router.navigateByUrl('parkings');
   }
 }

@@ -17,7 +17,6 @@ export class ParkingPreviewComponent implements OnInit {
   lat;
   lng;
   zoom: number = 16;
-  mapType:string = 'terrain';
 
   constructor(
     private restApi: RestApiService,
