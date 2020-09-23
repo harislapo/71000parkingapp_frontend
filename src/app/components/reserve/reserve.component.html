@@ -22,12 +22,12 @@
             {{ reservation.parkingLocated }}
           </h3>
           <div class="form-group w-25">
-            <label>Enter hours:</label>
             <input
+            [(ngModel)]="reservation.hoursReserved"
               type="number"
               class="form-control"
               id="hours"
-              placeholder="Ex. 2"
+              placeholder="Hours"
             />
           </div>
           <div class="mt-3 text-center">

@@ -4,5 +4,4 @@ export class RateParking {
   parkingId: number;
   rating: number;
   ratingDateCreated: Date;
-
 }

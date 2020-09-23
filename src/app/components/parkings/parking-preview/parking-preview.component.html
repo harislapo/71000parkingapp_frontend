@@ -1,10 +1,6 @@
 <!-- For google maps  -->
 <div class="container mb-4">
-  <agm-map
-    [zoom]="zoom"
-    [latitude]="lat"
-    [longitude]="lng"
-  >
+  <agm-map [zoom]="zoom" [latitude]="lat" [longitude]="lng">
     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
   </agm-map>
 </div>
@@ -45,7 +41,7 @@
       <div class="info-display">
         <i class="fa fa-star fa-2x"></i>
         <h5>Rating</h5>
-        <h6>4.4</h6>
+        <h6>{{ avgRating | number: "1.0-2" }}</h6>
       </div>
     </div>
   </div>
@@ -56,12 +52,15 @@
 
 <div class="container">
   <div class="text-center">
-    <!-- disable addToReserved button if its a free parking -->
+    <!--
+      disable addToReserved button if its a free parking or
+      if there exist an reservation already
+    -->
     <button
       class="btn btn-success btn-lg mr-2"
       (click)="addToReserved(parking)"
-      [disabled]="parking.price == 0"
-      title="click here"
+      [disabled]="parking.price == 0 || existingReservation.length == 1"
+      title="Unable to reserve"
     >
       <i class="fa fa-check" aria-hidden="true"></i> Reserve
     </button>

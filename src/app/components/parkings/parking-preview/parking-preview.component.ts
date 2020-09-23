@@ -14,9 +14,11 @@ export class ParkingPreviewComponent implements OnInit {
   @Input() parking: Parking; /* for selected parking from parent component*/
   @Output() backToParkingsEmit = new EventEmitter();
 
+  avgRating: number;
+  existingReservation = [];
   lat;
   lng;
-  zoom: number = 16;
+  zoom: number = 17;
 
   constructor(
     private restApi: RestApiService,
@@ -28,6 +30,8 @@ export class ParkingPreviewComponent implements OnInit {
   ngOnInit(): void {
     this.lat = this.parking.lat;
     this.lng = this.parking.lng;
+    this.getAvgRating();
+    this.checkForExistingReserve();
   }
 
   backToParkings() {
@@ -46,5 +50,19 @@ export class ParkingPreviewComponent implements OnInit {
         this.restApi.goToTop();
         this.router.navigateByUrl('reserved');
       });
+  }
+
+  getAvgRating() {
+    this.restApi
+      .getAvgRating(this.parking.id)
+      .subscribe((response: number) => {
+        this.avgRating = response[0].rating;
+      });
+  }
+
+  checkForExistingReserve() {
+    this.restApi.getReservedForUser(this.userService.loggedUser.id).subscribe((response: []) => {
+      this.existingReservation = response;
+    })
   }
 }

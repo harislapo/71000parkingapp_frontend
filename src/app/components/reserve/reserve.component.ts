@@ -42,6 +42,7 @@ export class ReserveComponent implements OnInit {
         parkingId: parking.id,
         userId: this.userService.loggedUser.id,
         reservationId: parking.reservationId,
+        hoursReserved: parking.hoursReserved
       })
       .subscribe((response) => {
         this.toastr.success('Reservation successful!');

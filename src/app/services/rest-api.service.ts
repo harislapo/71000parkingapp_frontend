@@ -82,11 +82,18 @@ export class RestApiService {
       request
     );
   }
-/*
-  getRatingForUser(userId: number, parkingId: number){
-    return this.http.get(this.serverUrl + 'parking/ratings/get-rating-for-user?userId=&parkingId=' + userId + parkingId)
+
+  getRatingForUser(userId: number, parkingId: number) {
+    return this.http.get(
+      this.serverUrl +
+        'parking/ratings/get-rating-for-user?userId=' +
+        userId +
+        '&parkingId=' +
+        parkingId
+    );
   }
 
+  /*
   removeRating(parkingId: number, userId: number) {
     return this.http.delete(
       this.serverUrl +
@@ -95,4 +102,12 @@ export class RestApiService {
         userId
     );
   } */
+
+  getAvgRating(parkingId: number) {
+    return this.http.get(
+      this.serverUrl +
+        'parking/ratings/get-average-rating?parkingId=' +
+        parkingId
+    );
+  }
 }

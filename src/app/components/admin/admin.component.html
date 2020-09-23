@@ -1,7 +1,7 @@
 <section id="tabs" class="project-tab" *ngIf="userService.isAdminRole">
   <div class="container">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 text-center">
         <nav>
           <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
             <a
@@ -50,7 +50,7 @@
                   <td>{{ user.email }}</td>
                   <td>{{ user.createDate | date: "dd/MM/yy, HH:mm " }}</td>
                   <td>
-                    <button class="btn-danger" (click)="deleteUser(user)">
+                    <button class="btn btn-danger" (click)="deleteUser(user)">
                       Remove
                     </button>
                   </td>
@@ -71,7 +71,7 @@
                   <th scope="col">Name</th>
                   <th scope="col">Location</th>
                   <th scope="col">Create date</th>
-                  <th scope="col"></th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
@@ -81,7 +81,7 @@
                   <td>{{ parking.parkingLocated }}</td>
                   <td>{{ parking.createDate | date: "dd/MM/yy, HH:mm " }}</td>
                   <td>
-                    <button class="btn-danger" (click)="deleteParking(parking)">
+                    <button class="btn btn-danger" (click)="deleteParking(parking)">
                       Remove
                     </button>
                   </td>

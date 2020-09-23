@@ -3,6 +3,25 @@
   <div class="border-top border-danger w-50 mx-auto mt-4"></div>
 </div>
 
+
+<div class="container mt-4">
+  <form class="form-group" (ngSubmit)="addComment()">
+    <label for="comment">Your comment: </label>
+    <textarea
+      name="comment"
+      id="comment"
+      rows="5"
+      class="form-control"
+      placeholder="Share your thoughts.."
+      [(ngModel)]="newComment.message"
+    ></textarea>
+    <div class="text-center mt-3">
+      <button class="btn btn-success mr-2" type="submit">Submit</button>
+      <button class="btn btn-danger" type="reset">Reset</button>
+    </div>
+  </form>
+</div>
+
 <div class="container mt-5"  *ngIf="comments.length > 0; else no_comments">
   <div *ngFor="let comment of comments">
     <div class="card mt-3">
@@ -39,20 +58,3 @@
   </div>
 </ng-template>
 
-<div class="container mt-4">
-  <form class="form-group" (ngSubmit)="addComment()">
-    <label for="comment">Your comment: </label>
-    <textarea
-      name="comment"
-      id="comment"
-      rows="5"
-      class="form-control"
-      placeholder="Share your thoughts.."
-      [(ngModel)]="newComment.message"
-    ></textarea>
-    <div class="text-center mt-3">
-      <button class="btn btn-success mr-2" type="submit">Submit</button>
-      <button class="btn btn-danger" type="reset">Reset</button>
-    </div>
-  </form>
-</div>

@@ -18,4 +18,5 @@ export class Parking {
   lat: number;
   lng: number;
   dateCreated: Date;
+  hoursReserved: number;
 }

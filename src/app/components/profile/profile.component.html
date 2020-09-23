@@ -103,7 +103,9 @@
                       <label style="font-weight: bold">Date registered</label>
                     </div>
                     <div class="col-md-8 col-6">
-                      {{ userService.loggedUser.createDate | date: "dd/MM/yyyy" }}
+                      {{
+                        userService.loggedUser.createDate | date: "dd/MM/yyyy"
+                      }}
                     </div>
                   </div>
                 </div>
@@ -146,8 +148,13 @@
                                 {{
                                   finishedReservation.dateCreated
                                     | date: "HH:mm"
-                                }}</small
-                              >
+                                }}
+                                for
+                                {{
+                                  finishedReservation.hoursReserved
+                                }}
+                                hours
+                              </small>
                             </p>
                           </div>
                         </div>

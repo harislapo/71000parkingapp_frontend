@@ -1,5 +1,4 @@
 import { UserService } from './../../services/user-service.service';
-import { RateParking } from './Rate-Parking.class';
 import { ToastrService } from 'ngx-toastr';
 import { RestApiService } from './../../services/rest-api.service';
 import { Component, OnInit, Input } from '@angular/core';
@@ -12,15 +11,17 @@ import { Parking } from '../parkings/Parking.class';
 })
 export class RatingComponent implements OnInit {
   @Input() parkingId: Parking;
-
   rating = 0;
+
   constructor(
     private restApi: RestApiService,
     private toastr: ToastrService,
     public userService: UserService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getRatingForUser();
+  }
 
   addRating() {
     this.restApi
@@ -34,7 +35,13 @@ export class RatingComponent implements OnInit {
       });
   }
 
-  onClear(){
-
+  getRatingForUser() {
+    this.restApi
+      .getRatingForUser(this.userService.loggedUser.id, this.parkingId.id)
+      .subscribe((response: number) => {
+        this.rating = response[0].rating;
+      });
   }
+
+  onClear() {}
 }
