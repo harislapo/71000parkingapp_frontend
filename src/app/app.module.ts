@@ -71,7 +71,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
       newestOnTop: true
     }),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCGsfiMguGFcl-_XPNoV9i2iLKcVp9nOUI'
+      apiKey: ''
     }),
     NgbModule
   ],
